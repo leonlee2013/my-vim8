@@ -1,6 +1,14 @@
+" ======================================================================================
+" vim 内置配置 
+" ======================================================================================
+
+" 设置 vimrc 修改保存后立刻生效，不用在重新打开
+" 建议配置完成后将这个关闭
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
 set nocompatible
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
+
 
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
@@ -99,6 +107,10 @@ endfunction
 "colorscheme molokai
 "管理插件配置
 execute pathogen#infect()
+" syntax enable
+
+" set cursorline               "突出显示当前行
+" set showmatch                "显示括号匹配
 syntax on                    "开启文件类型侦测
 filetype indent on           "针对不同的文件采用不同的缩进格式
 filetype plugin  on          "这对不同的文件类型加载对应的插件
@@ -162,12 +174,6 @@ xnoremap <leader>" y:s/<c-r>0/"<c-r>0"/<cr>
 "if you use one of the following:
 " - https://github.com/Valloric/YouCompleteMe
 " - https://github.com/nvim-lua/completion-nvim
-" let g:UltiSnipsExpandTrigger="tab"
-" let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsExpandTrigger="<c-o>"
-let g:UltiSnipsJumpForwardTrigger="<c-n>"
-let g:UltiSnipsJumpBackwardTrigger="<c-p>"
-let g:UltiSnipsListSnippets="<c-l>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -191,12 +197,40 @@ autocmd FileType go nmap <Leader>i <Plug>(go-info)
 " let g:go_addtags_transform = "camelcase"
 " let g:go_highlight_types = 1
 " 突出显示函数和方法调用
-"let g:go_highlight_function_calls = 1
+let g:go_highlight_function_calls = 1
 " 突出显示以下运算符
  " let g:go_highlight_operators = 1
 " 突出显示额外类型
 " let g:go_highlight_extra_types = 1
 " 自动高亮匹配的标识符
-  " let g:go_auto_sameids = 1
+" let g:go_auto_sameids = 1
 
+let g:ycm_key_list_select_completion = ['<C-n>', '<space>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
+"let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+"let g:UltiSnipsListSnippets="<c-l>"
+
+" 用来提供一个导航目录的侧边栏
+call pathogen#infect()
+syntax on
+filetype plugin indent on
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+highlight Search ctermbg=yellow ctermfg=black 
+" 新增的行
+hi DiffAdd    ctermbg=235  ctermfg=108  guibg=#262626 guifg=#87af87 cterm=reverse gui=reverse
+" " 变化的行
+hi DiffChange ctermbg=235  ctermfg=103  guibg=#262626 guifg=#8787af cterm=reverse gui=reverse
+" " 删除的行
+hi DiffDelete ctermbg=235  ctermfg=131  guibg=#262626 guifg=#af5f5f cterm=reverse gui=reverse
+" " 变化的文字
+hi DiffText   ctermbg=235  ctermfg=208  guibg=#262626 guifg=#ff8700 cterm=reverse gui=reverse

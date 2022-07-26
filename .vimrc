@@ -104,28 +104,25 @@ function! CurDir()
 	return curdir
 endfunction
 
-"colorscheme molokai
 "管理插件配置
 execute pathogen#infect()
-" syntax enable
-
-" set cursorline               "突出显示当前行
-" set showmatch                "显示括号匹配
 syntax on                    "开启文件类型侦测
 filetype indent on           "针对不同的文件采用不同的缩进格式
 filetype plugin  on          "这对不同的文件类型加载对应的插件
 filetype plugin indent on    "启用自动补全功能
 
-"set path+=common/**/
 set path+=/usr/local/lib/erlang/lib/**/
 set path+=**/
 set wildmenu 
-
+"==============================================================================
 "ctrlp的配置
+"==============================================================================
 let g:ctrlp_user_command = 'find %s -type f  -name "*.go" -o -name "*.erl" -o -name "*.hrl" -o -name "*.log" -o -name "*.proto" -o -name "*.sh" ' "mac和linux 有效
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:30,results:45'
 
+"==============================================================================
 "定义快捷键
+"==============================================================================
 let mapleader = ","
 "全选
 inoremap <leader>a <esc>ggvG 
@@ -170,45 +167,15 @@ inoremap <leader>" <Esc>:s/<c-r><c-w>/"<c-r><c-w>"/<cr>
 nnoremap <leader>" :s/<c-r><c-w>/"<c-r><c-w>"/<cr>
 xnoremap <leader>" y:s/<c-r>0/"<c-r>0"/<cr>
 
-"Trigger configuration. You need to change this to something other than <tab>
-"if you use one of the following:
-" - https://github.com/Valloric/YouCompleteMe
-" - https://github.com/nvim-lua/completion-nvim
-
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
-
-" https://github.com/fatih/vim-go-tutorial#quick-setup
-set autowrite
-" 快速修复列表中的错误之间跳转
-" map <C-n> :cnext<CR>
-" map <C-m> :cprevious<CR>
-" nnoremap <leader>a :cclose<CR>
-
-
-autocmd FileType go nmap <leader>b  <Plug>(go-build)
-autocmd FileType go nmap <leader>r  <Plug>(go-run)
-autocmd FileType go nmap <leader>t  <Plug>(go-test)
-autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-autocmd FileType go nmap <Leader>i <Plug>(go-info)
-" let g:go_auto_type_info = 1
-" let g:go_fmt_command = "goimports"
-" 默认情况下，vim-go 使用snake_case
-" let g:go_addtags_transform = "camelcase"
-" let g:go_highlight_types = 1
-" 突出显示函数和方法调用
-let g:go_highlight_function_calls = 1
-" 突出显示以下运算符
- " let g:go_highlight_operators = 1
-" 突出显示额外类型
-" let g:go_highlight_extra_types = 1
-" 自动高亮匹配的标识符
-" let g:go_auto_sameids = 1
-
-let g:ycm_key_list_select_completion = ['<C-n>', '<space>']
+"==============================================================================
+""  Valloric/YouCompleteMe 插件
+"==============================================================================
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
-
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
@@ -216,21 +183,52 @@ let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
 "let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "let g:UltiSnipsListSnippets="<c-l>"
 
-" 用来提供一个导航目录的侧边栏
-call pathogen#infect()
-syntax on
-filetype plugin indent on
+"导航目录的侧边栏
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-
+"==============================================================================
+"" vim-go 插件
+" https://github.com/fatih/vim-go-tutorial#quick-setup
+"==============================================================================
+set autowrite
+let g:go_fmt_command = "goimports" " 格式化将默认的 gofmt 替换
+let g:go_list_type = "quickfix"
+" let g:godef_split=2
+let g:go_autodetect_gopath = 1
+let g:go_auto_type_info = 1
+" let g:go_addtags_transform = "camelcase" " 默认情况下，vim-go 使用snake_case
+let g:go_highlight_functions = 1 " 突出显示函数和方法调用
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1 " 突出显示以下运算符
+let g:go_auto_sameids = 1 " 自动高亮匹配的标识符
+let g:go_version_warning = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_extra_types = 1 " 突出显示额外类型
+" let g:go_highlight_methods = 1
+" let g:go_highlight_generate_tags = 1
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <Leader>i <Plug>(go-info)
+"==============================================================================
+"" 颜色和主题
+"==============================================================================
+set t_Co=256
 highlight Search ctermbg=yellow ctermfg=black 
-" 新增的行
-hi DiffAdd    ctermbg=235  ctermfg=108  guibg=#262626 guifg=#87af87 cterm=reverse gui=reverse
-" " 变化的行
-hi DiffChange ctermbg=235  ctermfg=103  guibg=#262626 guifg=#8787af cterm=reverse gui=reverse
-" " 删除的行
-hi DiffDelete ctermbg=235  ctermfg=131  guibg=#262626 guifg=#af5f5f cterm=reverse gui=reverse
-" " 变化的文字
-hi DiffText   ctermbg=235  ctermfg=208  guibg=#262626 guifg=#ff8700 cterm=reverse gui=reverse
+hi DiffAdd    ctermbg=235  ctermfg=108  guibg=#262626 guifg=#87af87 cterm=reverse gui=reverse " 新增的行
+hi DiffChange ctermbg=235  ctermfg=103  guibg=#262626 guifg=#8787af cterm=reverse gui=reverse " 变化的行
+hi DiffDelete ctermbg=235  ctermfg=131  guibg=#262626 guifg=#af5f5f cterm=reverse gui=reverse " 删除的行
+hi DiffText   ctermbg=235  ctermfg=208  guibg=#262626 guifg=#ff8700 cterm=reverse gui=reverse " 变化的文字
+" colorscheme molokai
+" set background=light        " for the light version
+" set background=dark " for the dark version
+" let g:one_allow_italics = 1 " I love italic for comments
+" colorscheme one
+let g:molokai_original = 1
+let g:rehash256 = 1
+colorscheme molokai
+

@@ -178,5 +178,10 @@ hi DiffAdd    ctermbg=235  ctermfg=108  guibg=#262626 guifg=#87af87 cterm=revers
 hi DiffChange ctermbg=235  ctermfg=103  guibg=#262626 guifg=#8787af cterm=reverse gui=reverse " 变化的行
 hi DiffDelete ctermbg=235  ctermfg=131  guibg=#262626 guifg=#af5f5f cterm=reverse gui=reverse " 删除的行
 hi DiffText   ctermbg=235  ctermfg=208  guibg=#262626 guifg=#ff8700 cterm=reverse gui=reverse " 变化的文字
-colorscheme gruvbox
+" colorscheme jellybeans
+let g:vim_markdown_folding_disabled = 1
+
+" 防止文本格式错乱 " 因为 'paste' 激活时不能用映射
+" 'pastetoggle' 选项可以用来指定切换 'paste' 选项的热键。
+set pastetoggle=<F11>
 

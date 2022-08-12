@@ -104,6 +104,10 @@ xnoremap <leader>f y:grep -r '<c-r>0' .<cr><cr>:cw<cr><cr>
 inoremap <leader>fe <esc>:grep -r --include=*.erl --include=*hrl --include=*proto '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
 nnoremap <leader>fe :grep -r --include=*.erl --include=*hrl --include=*proto '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
 xnoremap <leader>fe y:grep -r --include=*.erl --include=*hrl --include=*proto  '<c-r>0' .<cr><cr>:cw<cr><cr>
+"仅在go和proto文件中查找选中的单词
+inoremap <leader>fg <esc>:grep -r --include=*.go --include=*mod --include=*proto '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
+nnoremap <leader>fg :grep -r --include=*.go --include=*mod --include=*proto '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
+xnoremap <leader>fg y:grep -r --include=*.go --include=*mod --include=*proto  '<c-r>0' .<cr><cr>:cw<cr><cr>
 "单词替换
 inoremap <leader>w <Esc>:%s/<c-r>=expand("<cword>")<cr>/<c-r>=expand("<cword>")<cr>/g<Left><Left>
 nnoremap <leader>w :%s/<c-r>=expand("<cword>")<cr>>/<c-r>=expand("<cword>")<cr>/g<Left><Left>
@@ -169,6 +173,12 @@ autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
+" GoCallees 从函数调用处跳转到接口的真正实现，而不是接口定义 (方法调用点 -> struct 方法实现)
+autocmd FileType go nmap <Leader>dd <Plug>(go-callees) 
+" :GoCallers 找到当前函数被调用的地点
+autocmd FileType go nmap <Leader>de <Plug>(go-callers)
+" :GoImplements 跳转到该函数实现的接口定义处 (struct 方法定义 -> interface 定义)
+autocmd FileType go nmap <Leader>di <Plug>(go-implements)
 "==============================================================================
 "" 颜色和主题
 "==============================================================================
@@ -181,7 +191,10 @@ hi DiffText   ctermbg=235  ctermfg=208  guibg=#262626 guifg=#ff8700 cterm=revers
 " colorscheme jellybeans
 let g:vim_markdown_folding_disabled = 1
 
+" set paste
 " 防止文本格式错乱 " 因为 'paste' 激活时不能用映射
 " 'pastetoggle' 选项可以用来指定切换 'paste' 选项的热键。
 set pastetoggle=<F11>
+" map <F10>:set paste<CR>
+" map <F11>:set nopaste<CR>
 

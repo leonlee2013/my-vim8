@@ -15,7 +15,7 @@ https://github.com/jonathanfilip/vim-lucius
 https://github.com/ycm-core/YouCompleteMe#linux-64-bit
 
 ```bash
-yum install -y cmake  python3-devel
+dnf install -y cmake  python3-devel npm
 cd ~/.vim/bundle/
 git clone https://github.com/ycm-core/YouCompleteMe
 cd ./YouCompleteMe

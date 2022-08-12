@@ -12,7 +12,7 @@ https://github.com/jonathanfilip/vim-lucius
 
 **alma9-安装YouCompleteMe**
 
-https://github.com/ycm-core/YouCompleteMe
+https://github.com/ycm-core/YouCompleteMe#linux-64-bit
 
 ```bash
 yum install -y cmake  python3-devel

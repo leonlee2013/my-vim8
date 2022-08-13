@@ -8,6 +8,6 @@
   for github in `cat $ExecPath/vim_plugins.ini` ; do
     git clone $github
   done
-  
+ cd $ExecPath
  cp -rf ./.vimrc ~/
  cp -rf ./.vim ~/

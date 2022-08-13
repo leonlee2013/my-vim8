@@ -10,10 +10,12 @@ https://github.com/nanotech/jellybeans.vim
 https://github.com/jonathanfilip/vim-lucius
 
 
-**alma9-安装YouCompleteMe**
+**alma9.0-安装YouCompleteMe**
 
 https://github.com/ycm-core/YouCompleteMe#linux-64-bit
 
+先安装下go的最新版本
+https://go.dev/doc/install
 ```bash
 sudo dnf install -y cmake python3-devel npm
 cd ~/.vim/bundle/

@@ -142,11 +142,27 @@ let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
 "let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 "let g:UltiSnipsListSnippets="<c-l>"
 
-"导航目录的侧边栏
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
+"==============================================================================
+"" 颜色和主题
+"==============================================================================
+set t_Co=256
+highlight Search ctermbg=yellow ctermfg=black 
+hi DiffAdd    ctermbg=235  ctermfg=108  guibg=#262626 guifg=#87af87 cterm=reverse gui=reverse " 新增的行
+hi DiffChange ctermbg=235  ctermfg=103  guibg=#262626 guifg=#8787af cterm=reverse gui=reverse " 变化的行
+hi DiffDelete ctermbg=235  ctermfg=131  guibg=#262626 guifg=#af5f5f cterm=reverse gui=reverse " 删除的行
+hi DiffText   ctermbg=235  ctermfg=208  guibg=#262626 guifg=#ff8700 cterm=reverse gui=reverse " 变化的文字
+" colorscheme jellybeans
+let g:vim_markdown_folding_disabled = 1
+
+" set paste
+" 防止文本格式错乱 " 因为 'paste' 激活时不能用映射
+" 'pastetoggle' 选项可以用来指定切换 'paste' 选项的热键。
+" set pastetoggle=<F11>
+map <F10>:set paste<CR>
+map <F11>:set nopaste<CR>
+" 关掉vim发出的提示音；
+set vb t_vb=
+
 "==============================================================================
 "" vim-go 插件
 " https://github.com/fatih/vim-go-tutorial#quick-setup
@@ -180,21 +196,9 @@ autocmd FileType go nmap <Leader>de <Plug>(go-callers)
 " :GoImplements 跳转到该函数实现的接口定义处 (struct 方法定义 -> interface 定义)
 autocmd FileType go nmap <Leader>di <Plug>(go-implements)
 "==============================================================================
-"" 颜色和主题
+"导航目录的侧边栏
 "==============================================================================
-set t_Co=256
-highlight Search ctermbg=yellow ctermfg=black 
-hi DiffAdd    ctermbg=235  ctermfg=108  guibg=#262626 guifg=#87af87 cterm=reverse gui=reverse " 新增的行
-hi DiffChange ctermbg=235  ctermfg=103  guibg=#262626 guifg=#8787af cterm=reverse gui=reverse " 变化的行
-hi DiffDelete ctermbg=235  ctermfg=131  guibg=#262626 guifg=#af5f5f cterm=reverse gui=reverse " 删除的行
-hi DiffText   ctermbg=235  ctermfg=208  guibg=#262626 guifg=#ff8700 cterm=reverse gui=reverse " 变化的文字
-" colorscheme jellybeans
-let g:vim_markdown_folding_disabled = 1
-
-" set paste
-" 防止文本格式错乱 " 因为 'paste' 激活时不能用映射
-" 'pastetoggle' 选项可以用来指定切换 'paste' 选项的热键。
-set pastetoggle=<F11>
-" map <F10>:set paste<CR>
-" map <F11>:set nopaste<CR>
-
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>

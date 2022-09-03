@@ -157,9 +157,9 @@ let g:vim_markdown_folding_disabled = 1
 " set paste
 " 防止文本格式错乱 " 因为 'paste' 激活时不能用映射
 " 'pastetoggle' 选项可以用来指定切换 'paste' 选项的热键。
-" set pastetoggle=<F11>
-map <F10>:set paste<CR>
-map <F11>:set nopaste<CR>
+set pastetoggle=<F10>
+" map <F7>:set paste<CR>
+" map <F8>:set nopaste<CR>
 " 关掉vim发出的提示音；
 set vb t_vb=
 
@@ -170,31 +170,53 @@ set vb t_vb=
 set autowrite
 let g:go_fmt_command = "goimports" " 格式化将默认的 gofmt 替换
 let g:go_list_type = "quickfix"
-" let g:godef_split=2
 let g:go_autodetect_gopath = 1
 let g:go_auto_type_info = 1
-" let g:go_addtags_transform = "camelcase" " 默认情况下，vim-go 使用snake_case
 let g:go_highlight_functions = 1 " 突出显示函数和方法调用
 let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1 " 突出显示以下运算符
-let g:go_auto_sameids = 1 " 自动高亮匹配的标识符
 let g:go_version_warning = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_types = 1
 let g:go_highlight_extra_types = 1 " 突出显示额外类型
 let g:go_highlight_methods = 1
 let g:go_highlight_generate_tags = 1
+let g:go_auto_sameids = 1 " 自动高亮匹配的标识符
+" let g:godef_split=2
+" let g:go_addtags_transform = "camelcase" " 默认情况下，vim-go 使用snake_case
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
-" GoCallees 从函数调用处跳转到接口的真正实现，而不是接口定义 (方法调用点 -> struct 方法实现)
-autocmd FileType go nmap <Leader>dd <Plug>(go-callees) 
+" Rename the identifier under the cursor to a new name
+autocmd FileType go nmap <Leader>re <Plug>(go-rename)
 " :GoCallers 找到当前函数被调用的地点
-autocmd FileType go nmap <Leader>de <Plug>(go-callers)
+autocmd FileType go nmap <Leader>dc <Plug>(go-callers)
 " :GoImplements 跳转到该函数实现的接口定义处 (struct 方法定义 -> interface 定义)
 autocmd FileType go nmap <Leader>di <Plug>(go-implements)
+" GoCallees 从函数调用处跳转到接口的真正实现，而不是接口定义 (方法调用点 -> struct 方法实现)
+autocmd FileType go nmap <Leader>dd <Plug>(go-callees) 
+
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+"==============================================================================
+" YouCompleteMe 插件
+" YCM可以打开location-list来显示警告和错误的信息:YcmDiags
+"==============================================================================
+"跳转到定义GoToDefinition
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+"跳转到声明GoToDeclaration
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+"以及两者的合体GoToDefinitionElseDeclaration
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+nnoremap <leader>gc :YcmCompleter GoToCallers <CR>
+nnoremap <leader>gi :YcmCompleter GoToImplementation <CR>
+nnoremap <leader>gd :YcmCompleter GoToCallees <CR>
+" let g:ycm_error_symbol = '>>'
+" let g:ycm_warning_symbol = '>*'
 "==============================================================================
 "导航目录的侧边栏
 "==============================================================================

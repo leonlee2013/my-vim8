@@ -151,7 +151,9 @@ hi DiffAdd    ctermbg=235  ctermfg=108  guibg=#262626 guifg=#87af87 cterm=revers
 hi DiffChange ctermbg=235  ctermfg=103  guibg=#262626 guifg=#8787af cterm=reverse gui=reverse " 变化的行
 hi DiffDelete ctermbg=235  ctermfg=131  guibg=#262626 guifg=#af5f5f cterm=reverse gui=reverse " 删除的行
 hi DiffText   ctermbg=235  ctermfg=208  guibg=#262626 guifg=#ff8700 cterm=reverse gui=reverse " 变化的文字
-" colorscheme jellybeans
+colorscheme molokai
+colorscheme jellybeans
+" colorscheme lucius
 let g:vim_markdown_folding_disabled = 1
 
 " set paste
@@ -215,8 +217,15 @@ nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <leader>gc :YcmCompleter GoToCallers <CR>
 nnoremap <leader>gi :YcmCompleter GoToImplementation <CR>
 nnoremap <leader>gd :YcmCompleter GoToCallees <CR>
-" let g:ycm_error_symbol = '>>'
-" let g:ycm_warning_symbol = '>*'
+
+" 补全对话框的颜色修改
+" https://www.ditig.com/256-colors-cheat-sheet
+highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
+highlight PMenuSel ctermfg=242 ctermbg=8 guifg=darkgrey guibg=black
+
+" YCM 关闭自动弹出函数原型预览窗
+" set completeopt=menu,menuone
+" let g:ycm_add_preview_to_completeopt = 0
 "==============================================================================
 "导航目录的侧边栏
 "==============================================================================

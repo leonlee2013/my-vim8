@@ -147,8 +147,8 @@ let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
 "==============================================================================
 set t_Co=256
 highlight Search ctermbg=yellow ctermfg=black 
-hi DiffAdd    ctermbg=235  ctermfg=10idth:60,highlight:PMenuSbar8  guibg=#262626 guifg=#87af87 cterm=reverse gui=reverse " 新增的行
-hi DiffChange ctermbg=235  ctermfg=10idth:60,highlight:PMenuSbar3  guibg=#262626 guifg=#8787af cterm=reverse gui=reverse " 变化的行
+hi DiffAdd    ctermbg=235  ctermfg=108  guibg=#262626 guifg=#87af87 cterm=reverse gui=reverse " 新增的行
+hi DiffChange ctermbg=235  ctermfg=103  guibg=#262626 guifg=#8787af cterm=reverse gui=reverse " 变化的行
 hi DiffDelete ctermbg=235  ctermfg=131  guibg=#262626 guifg=#af5f5f cterm=reverse gui=reverse " 删除的行
 hi DiffText   ctermbg=235  ctermfg=208  guibg=#262626 guifg=#ff8700 cterm=reverse gui=reverse " 变化的文字
 " colorscheme molokai
@@ -160,7 +160,7 @@ let g:vim_markdown_folding_disabled = 1
 " set paste
 " 防止文本格式错乱 " 因为 'paste' 激活时不能用映射
 " 'pastetoggle' 选项可以用来指定切换 'paste' 选项的热键。
-set pastetoggle=<F10idth:60,highlight:PMenuSbar>
+set pastetoggle=<F10>
 " map <F7>:set paste<CR>
 " map <F8>:set nopaste<CR>
 " 关掉vim发出的提示音；
@@ -246,9 +246,7 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
-
 " 开关 弹出窗口中显示文档
 nmap <leader>d <plug>(YCMHover)
-
 " 关闭 弹出窗口中显示文档功能
 let g:ycm_auto_hover=''

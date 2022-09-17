@@ -147,19 +147,20 @@ let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
 "==============================================================================
 set t_Co=256
 highlight Search ctermbg=yellow ctermfg=black 
-hi DiffAdd    ctermbg=235  ctermfg=108  guibg=#262626 guifg=#87af87 cterm=reverse gui=reverse " 新增的行
-hi DiffChange ctermbg=235  ctermfg=103  guibg=#262626 guifg=#8787af cterm=reverse gui=reverse " 变化的行
+hi DiffAdd    ctermbg=235  ctermfg=10idth:60,highlight:PMenuSbar8  guibg=#262626 guifg=#87af87 cterm=reverse gui=reverse " 新增的行
+hi DiffChange ctermbg=235  ctermfg=10idth:60,highlight:PMenuSbar3  guibg=#262626 guifg=#8787af cterm=reverse gui=reverse " 变化的行
 hi DiffDelete ctermbg=235  ctermfg=131  guibg=#262626 guifg=#af5f5f cterm=reverse gui=reverse " 删除的行
 hi DiffText   ctermbg=235  ctermfg=208  guibg=#262626 guifg=#ff8700 cterm=reverse gui=reverse " 变化的文字
-colorscheme molokai
-colorscheme jellybeans
+" colorscheme molokai
 " colorscheme lucius
+" colorscheme gruvbox
+" colorscheme jellybeans
 let g:vim_markdown_folding_disabled = 1
 
 " set paste
 " 防止文本格式错乱 " 因为 'paste' 激活时不能用映射
 " 'pastetoggle' 选项可以用来指定切换 'paste' 选项的热键。
-set pastetoggle=<F10>
+set pastetoggle=<F10idth:60,highlight:PMenuSbar>
 " map <F7>:set paste<CR>
 " map <F8>:set nopaste<CR>
 " 关掉vim发出的提示音；
@@ -184,6 +185,15 @@ let g:go_highlight_extra_types = 1 " 突出显示额外类型
 let g:go_highlight_methods = 1
 let g:go_highlight_generate_tags = 1
 let g:go_auto_sameids = 1 " 自动高亮匹配的标识符
+"关闭自动匹配
+inoremap <leader>ns <esc>:let g:go_auto_sameids = 0:<cr> 
+nnoremap <leader>ns :let g:go_auto_sameids = 0<cr>
+xnoremap <leader>ns :let g:go_auto_sameids = 0<cr>
+"打开自动匹配
+inoremap <leader>s <esc>:let g:go_auto_sameids = 1:<cr> 
+nnoremap <leader>s :let g:go_auto_sameids = 1<cr>
+xnoremap <leader>s :let g:go_auto_sameids = 1<cr>
+
 " let g:godef_split=2
 " let g:go_addtags_transform = "camelcase" " 默认情况下，vim-go 使用snake_case
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
@@ -203,6 +213,8 @@ autocmd FileType go nmap <Leader>dd <Plug>(go-callees)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+
 "==============================================================================
 " YouCompleteMe 插件
 " YCM可以打开location-list来显示警告和错误的信息:YcmDiags
@@ -233,3 +245,10 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
+
+" 开关 弹出窗口中显示文档
+nmap <leader>d <plug>(YCMHover)
+
+" 关闭 弹出窗口中显示文档功能
+let g:ycm_auto_hover=''

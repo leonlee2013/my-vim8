@@ -73,7 +73,7 @@ set wildmenu
 "==============================================================================
 "ctrlp的配置
 "==============================================================================
-let g:ctrlp_user_command = 'find %s -type f  -name "*.go" -o -name "*.erl" -o -name "*.hrl" -o -name "*.log" -o -name "*.proto" -o -name "*.sh" ' "mac和linux 有效
+let g:ctrlp_user_command = 'find %s -type f  -name "*.h" -o -name "*.c" -o -name "*.go" -o -name "*.erl" -o -name "*.hrl" -o -name "*.log" -o -name "*.proto" -o -name "*.sh" ' "mac和linux 有效
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:30,results:45'
 "==============================================================================
 "定义快捷键
@@ -215,6 +215,12 @@ au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 
 
+nmap <Leader>la :ErlangTags<CR>
+nmap <Leader>le :ErlangEnableShowErrors <CR>
+nmap <Leader>ld :ErlangDisableShowErrors <CR>
+let erlang_show_errors = 0
+
+" ErlangDisableShowErrors  ErlangEnableShowErrors    ErlangToggleShowErrors
 "==============================================================================
 " YouCompleteMe 插件
 " YCM可以打开location-list来显示警告和错误的信息:YcmDiags
@@ -250,3 +256,15 @@ nnoremap <C-f> :NERDTreeFind<CR>
 nmap <leader>d <plug>(YCMHover)
 " 关闭 弹出窗口中显示文档功能
 let g:ycm_auto_hover=''
+" 插入(x)日期
+" iab xtime <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
+inoremap <leader>xt <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
+
+" inoremap <leader>" <Esc>:s/<c-r><c-w>/"<c-r><c-w>"/<cr>
+" nnoremap <leader>" :s/<c-r><c-w>/"<c-r><c-w>"/<cr>
+" xnoremap <leader>" y:s/<c-r>0/"<c-r>0"/<cr>
+
+" Let clangd fully control code completion
+" let g:ycm_clangd_uses_ycmd_caching = 0
+" " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
+" let g:ycm_clangd_binary_path = exepath("clangd")

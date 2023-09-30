@@ -5,9 +5,9 @@ set -e
 ABSFile=`realpath $0`
 ExecPath=`realpath "$(dirname $ABSFile)"`
 mkdir -p $ExecPath/.vim/bundle && cd $ExecPath/.vim/bundle
-# for github in `cat $ExecPath/vim_plugins.ini` ; do
-# git clone $github
-# done
+for github in `cat $ExecPath/vim_plugins.ini` ; do
+git clone $github
+done
 cd $ExecPath
 
 # 获取当前日期和时间，并格式化为YYYY-MM-DD_HH-MM-SS的形式

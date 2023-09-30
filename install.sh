@@ -1,5 +1,5 @@
 #!/bin/bash
- #git clone https://github.com/tpope/vim-pathogen.git
+#git clone https://github.com/tpope/vim-pathogen.git
 
  set -e
  ABSFile=`realpath $0`

@@ -67,13 +67,15 @@ filetype plugin indent on    "启用自动补全功能
 "==============================================================================
 "gf路径配置
 "==============================================================================
+set path+=**/src/**/
+" set path+=./*/src/**/
 set path+=/usr/local/lib/erlang/lib/**/
-set path+=**/
+" set path+=**/
 set wildmenu 
 "==============================================================================
 "ctrlp的配置
 "==============================================================================
-let g:ctrlp_user_command = 'find %s -type f  -name "*.h" -o -name "*.c" -o -name "*.go" -o -name "*.erl" -o -name "*.hrl" -o -name "*.log" -o -name "*.proto" -o -name "*.sh" ' "mac和linux 有效
+let g:ctrlp_user_command = 'find %s -type f  -name "*.h" -o -name "*.c" -o -name "*.go" -o -name "*.erl" -o -name "*.hrl" -o -name "*.ex" -o -name "*.exs" -o -name "*.log" -o -name "*.thrift" -o -name "*.proto"-o -name "*.sh" ' "mac和linux 有效
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:30,results:45'
 "==============================================================================
 "定义快捷键
@@ -101,9 +103,10 @@ inoremap <leader>f <esc>:grep -r '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
 nnoremap <leader>f :grep -r '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
 xnoremap <leader>f y:grep -r '<c-r>0' .<cr><cr>:cw<cr><cr>
 "仅在erlang和proto文件中查找选中的单词
-inoremap <leader>fe <esc>:grep -r --include=*.erl --include=*hrl --include=*proto '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
-nnoremap <leader>fe :grep -r --include=*.erl --include=*hrl --include=*proto '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
-xnoremap <leader>fe y:grep -r --include=*.erl --include=*hrl --include=*proto  '<c-r>0' .<cr><cr>:cw<cr><cr>
+inoremap <leader>fe <esc>:grep -r --include=*.erl --include=*hrl --include=*ex --include=*exs --include=*proto '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
+nnoremap <leader>fe :grep -r --include=*.erl --include=*hrl --include=*ex --include=*exs --include=*proto '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
+xnoremap <leader>fe y:grep -r --include=*.erl --include=*hrl --include=*ex --include=*exs --include=*proto  '<c-r>0' .<cr><cr>:cw<cr><cr>
+
 "仅在go和proto文件中查找选中的单词
 inoremap <leader>fg <esc>:grep -r --include=*.go --include=*mod --include=*proto '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
 nnoremap <leader>fg :grep -r --include=*.go --include=*mod --include=*proto '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
@@ -125,6 +128,14 @@ nnoremap <leader>t :CtrlPBuffer<cr>
 inoremap <leader>" <Esc>:s/<c-r><c-w>/"<c-r><c-w>"/<cr>
 nnoremap <leader>" :s/<c-r><c-w>/"<c-r><c-w>"/<cr>
 xnoremap <leader>" y:s/<c-r>0/"<c-r>0"/<cr>
+" 映射按键 `<leader>fs` 以搜索选中的字符
+vnoremap <leader>fs y:grep -r --include=*ex --include=*.erl --include=*hrl  --include=*proto '\<<c-r>"\>' .<cr><cr>:cw<cr><cr>
+" 映射按键 `<leader>fv` 以搜索选中的字符
+vnoremap <leader>fv y/<C-R>"<CR>
+nnoremap <leader>fv y/<C-R>"<CR>
+" 映射按键 `<leader>fsm` 以搜索选中的字符
+vnoremap <leader>fm y:grep -r --include=*ex --include=*.erl --include=*hrl  --include=*proto 'defmodule \<<c-r>"\>'   .<cr><cr>:cw<cr><cr>
+
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -155,7 +166,7 @@ hi DiffText   ctermbg=235  ctermfg=208  guibg=#262626 guifg=#ff8700 cterm=revers
 " colorscheme lucius
 " colorscheme gruvbox
 " colorscheme jellybeans
-let g:vim_markdown_folding_disabled = 1
+" let g:vim_markdown_folding_disabled = 1
 
 " set paste
 " 防止文本格式错乱 " 因为 'paste' 激活时不能用映射
@@ -236,6 +247,16 @@ nnoremap <leader>gc :YcmCompleter GoToCallers <CR>
 nnoremap <leader>gi :YcmCompleter GoToImplementation <CR>
 nnoremap <leader>gd :YcmCompleter GoToCallees <CR>
 
+"跳转到定义LspDefinition
+nnoremap <leader>] :LspDefinition<CR>
+nnoremap <leader>cd :LspDefinition<CR>
+" :LspDocumentSymbol  显示文档符号
+nnoremap <leader>co :LspDocumentSymbol<CR>
+" :LspHover 显示悬停信息
+nnoremap <leader>ch :LspHover<CR>
+" :LspPeekDefinition  转到光标下单词的定义，但在预览窗口中打开
+nnoremap <leader>cp :LspPeekDefinition<CR>
+
 " 补全对话框的颜色修改
 " https://www.ditig.com/256-colors-cheat-sheet
 highlight PMenu ctermfg=0 ctermbg=242 guifg=black guibg=darkgrey
@@ -268,3 +289,9 @@ inoremap <leader>xt <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
 " let g:ycm_clangd_uses_ycmd_caching = 0
 " " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
 " let g:ycm_clangd_binary_path = exepath("clangd")
+
+au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
+au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
+au BufRead,BufNewFile mix.lock set filetype=elixir
+
+

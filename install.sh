@@ -20,7 +20,7 @@ VimrcFPath=$(realpath -q ~/.vimrc | echo "")
 VimDPath=$(realpath -q ~/.vim | echo "")
 # 使用日期来修改文件名
 #备份.vimrc
-if [ -n $VimrcFPath ] && [ -f $VimrcFPath ]; then
+if [ $VimrcFPath != "" ] && [ -f $VimrcFPath ]; then
   echo "已备份为：${VimrcFPath}_${CurrentDate}"
   mv $VimrcFPath ${VimrcFPath}_${CurrentDate}
 else
@@ -28,7 +28,7 @@ else
 fi
 
 #备份.vim目录
-if [ -n $VimDPath ] && [ -d $VimDPath ]; then
+if [ $VimDPath != "" ] && [ -d $VimDPath ]; then
   mv $VimDPath "${VimDPath}_${CurrentDate}"
   echo "已备份为：${VimDPath}_${CurrentDate}"
 else

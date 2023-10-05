@@ -16,8 +16,8 @@ cd $ExecPath
 # 获取当前日期和时间，并格式化为YYYY-MM-DD_HH-MM-SS的形式
 CurrentDate=$(date +"%Y-%m-%d_%H-%M-%S")
 #兼容mac
-VimrcFPath=$(realpath -q ~/.vimrc || echo "")
-VimDPath=$(realpath -q ~/.vim || echo "")
+VimrcFPath=$(realpath ~/.vimrc || echo "")
+VimDPath=$(realpath ~/.vim || echo "")
 # 使用日期来修改文件名
 #备份.vimrc
 if [ "${VimrcFPath}X" != "X" ] && [ -f $VimrcFPath ]; then

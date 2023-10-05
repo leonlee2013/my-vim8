@@ -21,8 +21,8 @@ VimDPath=$(realpath -q ~/.vim | echo "")
 # 使用日期来修改文件名
 #备份.vimrc
 if [ -f $VimrcFPath ]; then
-  mv $VimrcFPath ${VimrcFPath}_${CurrentDate}
   echo "已备份为：${VimrcFPath}_${CurrentDate}"
+  mv $VimrcFPath ${VimrcFPath}_${CurrentDate}
 else
   echo ".vimrc不存在, 不需要备份"
 fi

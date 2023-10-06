@@ -103,14 +103,14 @@ inoremap <leader>f <esc>:grep -r '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
 nnoremap <leader>f :grep -r '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
 xnoremap <leader>f y:grep -r '<c-r>0' .<cr><cr>:cw<cr><cr>
 "仅在erlang和proto文件中查找选中的单词
-inoremap <leader>fe <esc>:grep -r --include=*.erl --include=*hrl --include=*ex --include=*exs --include=*proto '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
-nnoremap <leader>fe :grep -r --include=*.erl --include=*hrl --include=*ex --include=*exs --include=*proto '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
-xnoremap <leader>fe y:grep -r --include=*.erl --include=*hrl --include=*ex --include=*exs --include=*proto  '<c-r>0' .<cr><cr>:cw<cr><cr>
+inoremap <leader>fe <esc>:grep -r --include='*.erl' --include='*hrl' --include='*ex' --include='*exs' --include='*proto' '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
+nnoremap <leader>fe :grep -r --include='*.erl' --include='*hrl' --include='*ex' --include='*exs' --include='*proto' '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
+xnoremap <leader>fe y:grep -r --include='*.erl' --include='*hrl' --include='*ex' --include='*exs' --include='*proto'  '<c-r>0' .<cr><cr>:cw<cr><cr>
 
 "仅在go和proto文件中查找选中的单词
-inoremap <leader>fg <esc>:grep -r --include=*.go --include=*mod --include=*proto '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
-nnoremap <leader>fg :grep -r --include=*.go --include=*mod --include=*proto '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
-xnoremap <leader>fg y:grep -r --include=*.go --include=*mod --include=*proto  '<c-r>0' .<cr><cr>:cw<cr><cr>
+inoremap <leader>fg <esc>:grep -r --include='*.go' --include='*mod' --include='*proto' '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
+nnoremap <leader>fg :grep -r --include='*.go' --include='*mod' --include='*proto' '\<<c-r><c-w>\>' .<cr><cr>:cw<cr><cr>
+xnoremap <leader>fg y:grep -r --include='*.go' --include='*mod' --include='*proto'  '<c-r>0' .<cr><cr>:cw<cr><cr>
 "单词替换
 inoremap <leader>w <Esc>:%s/<c-r>=expand("<cword>")<cr>/<c-r>=expand("<cword>")<cr>/g<Left><Left>
 nnoremap <leader>w :%s/<c-r>=expand("<cword>")<cr>>/<c-r>=expand("<cword>")<cr>/g<Left><Left>
@@ -129,12 +129,12 @@ inoremap <leader>" <Esc>:s/<c-r><c-w>/"<c-r><c-w>"/<cr>
 nnoremap <leader>" :s/<c-r><c-w>/"<c-r><c-w>"/<cr>
 xnoremap <leader>" y:s/<c-r>0/"<c-r>0"/<cr>
 " 映射按键 `<leader>fs` 以搜索选中的字符
-vnoremap <leader>fs y:grep -r --include=*ex --include=*.erl --include=*hrl  --include=*proto '\<<c-r>"\>' .<cr><cr>:cw<cr><cr>
+vnoremap <leader>fs y:grep -r --include='*ex' --include='*.erl' --include='*hrl'  --include='*proto' '\<<c-r>"\>' .<cr><cr>:cw<cr><cr>
 " 映射按键 `<leader>fv` 以搜索选中的字符
 vnoremap <leader>fv y/<C-R>"<CR>
 nnoremap <leader>fv y/<C-R>"<CR>
 " 映射按键 `<leader>fsm` 以搜索选中的字符
-vnoremap <leader>fm y:grep -r --include=*ex --include=*.erl --include=*hrl  --include=*proto 'defmodule \<<c-r>"\>'   .<cr><cr>:cw<cr><cr>
+vnoremap <leader>fm y:grep -r --include='*ex' --include='*.erl' --include='*hrl'  --include='*proto' 'defmodule \<<c-r>"\>'   .<cr><cr>:cw<cr><cr>
 
 
 " If you want :UltiSnipsEdit to split your window.

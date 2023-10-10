@@ -75,7 +75,7 @@ set wildmenu
 "==============================================================================
 "ctrlp的配置
 "==============================================================================
-let g:ctrlp_user_command = 'find %s -type f  -name "*.h" -o -name "*.c" -o -name "*.go" -o -name "*.erl" -o -name "*.hrl" -o -name "*.ex" -o -name "*.exs" -o -name "*.log" -o -name "*.thrift" -o -name "*.proto"-o -name "*.sh" ' "mac和linux 有效
+let g:ctrlp_user_command = 'find %s -type f  -name "*.h" -o -name "*.c" -o -name "*.go" -o -name "*.erl" -o -name "*.hrl" -o -name "*.ex" -o -name "*.exs" -o -name "*.log" -o -name "*.thrift" -o -name "*.proto" -o -name "*.sh" ' "mac和linux 有效
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:30,results:45'
 "==============================================================================
 "定义快捷键

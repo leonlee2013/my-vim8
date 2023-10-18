@@ -294,4 +294,12 @@ au BufRead,BufNewFile *.ex,*.exs set filetype=elixir
 au BufRead,BufNewFile *.eex,*.heex,*.leex,*.sface,*.lexs set filetype=eelixir
 au BufRead,BufNewFile mix.lock set filetype=elixir
 
+" 显示消息的延迟（以毫秒为单位）。设置得太低可能会导致性能问题。 " 默认：1000
+let g:blamer_delay = 500
+" 以相对格式显示提交日期  默认：0
+let g:blamer_relative_time = 1
+" 消息的颜色,默认：link Blamer Comment
+" highlight Blamer guifg=lightgrey
+let g:blamer_enabled = 1
+
 

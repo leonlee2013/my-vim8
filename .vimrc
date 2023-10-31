@@ -167,6 +167,11 @@ hi DiffText   ctermbg=235  ctermfg=208  guibg=#262626 guifg=#ff8700 cterm=revers
 " colorscheme gruvbox
 " colorscheme jellybeans
 " let g:vim_markdown_folding_disabled = 1
+let env_value = $TMUX
+if !empty(env_value)
+  " colorscheme industry
+  colorscheme elflord
+endif
 
 " set paste
 " 防止文本格式错乱 " 因为 'paste' 激活时不能用映射

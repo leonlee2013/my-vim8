@@ -162,10 +162,10 @@ hi DiffAdd    ctermbg=235  ctermfg=108  guibg=#262626 guifg=#87af87 cterm=revers
 hi DiffChange ctermbg=235  ctermfg=103  guibg=#262626 guifg=#8787af cterm=reverse gui=reverse " 变化的行
 hi DiffDelete ctermbg=235  ctermfg=131  guibg=#262626 guifg=#af5f5f cterm=reverse gui=reverse " 删除的行
 hi DiffText   ctermbg=235  ctermfg=208  guibg=#262626 guifg=#ff8700 cterm=reverse gui=reverse " 变化的文字
-colorscheme molokai
+" colorscheme molokai
 " colorscheme lucius
 " colorscheme gruvbox
-" colorscheme jellybeans
+colorscheme jellybeans
 " let g:vim_markdown_folding_disabled = 1
 " let env_value = $TMUX
 " if !empty(env_value)

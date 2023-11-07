@@ -252,8 +252,9 @@ nnoremap <leader>gc :YcmCompleter GoToCallers <CR>
 nnoremap <leader>gi :YcmCompleter GoToImplementation <CR>
 nnoremap <leader>gd :YcmCompleter GoToCallees <CR>
 
+autocmd FileType elixir nmap <C-]> :LspDefinition<CR>
+autocmd FileType erlang nmap <leader>cd  <C-]>
 "跳转到定义LspDefinition
-nnoremap <leader>] :LspDefinition<CR>
 nnoremap <leader>cd :LspDefinition<CR>
 " :LspDocumentSymbol  显示文档符号
 nnoremap <leader>co :LspDocumentSymbol<CR>
